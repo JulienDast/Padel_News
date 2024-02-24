@@ -30,3 +30,21 @@ module.exports.signInErrors = (err) => {
 
   return errors;
 };
+
+module.exports.handleProfileUpdateErrors = (err) => {
+  let errors = { name: '', file: '' };
+
+  if (err.message.includes('Invalid file format')) {
+    errors.file = 'Format de fichier invalide. Seuls les formats JPEG, JPG ou PNG sont autorisés.';
+  }
+
+  if (err.message.includes('File size exceeds the limit')) {
+    errors.file = 'La taille du fichier dépasse la limite. La taille maximale autorisée est de 5 Mo.';
+  }
+
+  if (err.message.includes('Failed to update user profile')) {
+    errors.name = 'Échec de la mise à jour du profil utilisateur.';
+  }
+
+  return errors;
+};

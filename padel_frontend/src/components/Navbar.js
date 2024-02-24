@@ -17,6 +17,12 @@ const Navbar = () => {
             <h4>Logo</h4>
             <h3>Padel News</h3>
           </NavLink>
+          <NavLink exact to="/profil">
+            <h4>Logo profil</h4>
+          </NavLink>
+          <NavLink exact to="/article">
+            <h4>Logo articles</h4>
+          </NavLink>
         </div>
         {uid?(
           <ul>
