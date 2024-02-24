@@ -28,7 +28,7 @@ const uploadSingle = async (req, res, next) => {
 
       const newExtension = '.jpg';
 
-      const newPath = path.join('./client/public/uploads/profil', name + newExtension);
+      const newPath = path.join(__dirname, '../../padel_frontend/public/uploads/profil', name + newExtension);
 
       await fs.rename(oldPath, newPath);
 
@@ -52,4 +52,3 @@ const uploadSingle = async (req, res, next) => {
 };
 
 module.exports = { uploadSingle };
-

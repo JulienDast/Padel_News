@@ -3,7 +3,7 @@ import React from 'react';
 const Article = () => {
   return (
     <div>
-      Ceci est un article
+      Ceci est la page qui regroupera les articles
     </div>
   );
 };
