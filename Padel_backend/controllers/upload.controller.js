@@ -12,7 +12,7 @@ const uploadSingle = async (req, res, next) => {
     }
 
     try {
-      const name = fields.name || "default";
+      const name = fields.userId || "default";
       const uploadedFile = files.file[0];
       const oldPath = uploadedFile.filepath;
       const originalExtension = path.extname(uploadedFile.originalFilename).toLowerCase();
