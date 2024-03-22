@@ -13,14 +13,14 @@ const Navbar = () => {
     <nav>
       <div className="nav-container">
         <div className="logo">
-          <NavLink exact to="/">
+          <NavLink exact="true" to="/">
             <h4>Logo</h4>
             <h3>Padel News</h3>
           </NavLink>
-          <NavLink exact to="/profil">
+          <NavLink exact="true" to="/profil">
             <h4>Logo profil</h4>
           </NavLink>
-          <NavLink exact to="/article">
+          <NavLink exact="true" to="/articles">
             <h4>Logo articles</h4>
           </NavLink>
         </div>
@@ -28,7 +28,7 @@ const Navbar = () => {
           <ul>
             <li>
               <div className="welcome">
-                <NavLink exact to='/profil'>
+                <NavLink exact="true" to='/profil'>
                   <h5>Bienvenue {userData.pseudo}</h5>
                 </NavLink>
               </div>
@@ -38,7 +38,7 @@ const Navbar = () => {
         ) : (
           <ul>
             <li>
-              <NavLink exact to='/profil'>
+              <NavLink exact='true' to='/profil'>
                 Logo se connecter
               </NavLink>
             </li>
