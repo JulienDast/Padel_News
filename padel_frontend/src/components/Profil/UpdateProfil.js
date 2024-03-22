@@ -36,7 +36,7 @@ const UpdateProfil = () => {
       )}
       {updatePseudoForm && (
         <>
-          <textarea id='pseudoInput' type="text" defaultValue={userData.pseudo} onChange={(e) => setPseudo(e.target.value)}></textarea>
+          <textarea id='pseudoInput' type="text" defaultValue={userData.pseudo} value={pseudo} onChange={(e) => setPseudo(e.target.value)}></textarea>
           <button onClick={handleUpdatePseudo}>Valider les modifications</button>
         </>
       )}

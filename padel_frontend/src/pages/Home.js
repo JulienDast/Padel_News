@@ -3,7 +3,7 @@ import React from 'react';
 const Home = () => {
   return (
     <div>
-      <h2>Hello depuis home</h2>
+      Accueil avec les derniers articles, navbar complète et éventuellement fetch WPT API ou résultats tennis
     </div>
   );
 };
