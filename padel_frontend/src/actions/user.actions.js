@@ -4,6 +4,7 @@ export const GET_USER = "GET_USER";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 export const UPDATE_BIO = "UPDATE_BIO";
 export const UPDATE_PSEUDO = "UPDATE_PSEUDO";
+export const DELETE_PIC = "DELETE_PIC";
 
 export const getUser = (uid) =>{
   return (dispatch)=>{
@@ -59,3 +60,15 @@ export const updatePseudo = (userId, pseudo) =>{
   }
 }
 
+export const deletePicProfil = (userId)=>{
+  return(dispatch)=>{
+    return axios({
+      method: 'delete',
+      url: `${process.env.REACT_APP_API_URL}api/user/delete-pic/${userId}`
+    })
+    .then((res)=>{
+      dispatch({type: DELETE_PIC, payload: {userId}});
+    })
+    .catch((err)=>console.log(err));
+  }
+}

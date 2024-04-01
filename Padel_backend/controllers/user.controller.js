@@ -1,5 +1,7 @@
 const UserModel = require('../models/user.model');
 const ObjectID = require('mongoose').Types.ObjectId;
+const path = require('path');
+const fs = require('fs/promises');
 
 module.exports.getAllUsers = async (req, res) => {
   const users = await UserModel.find().select('-password');
@@ -70,4 +72,30 @@ module.exports.deleteUser = async (req, res) => {
     return res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+module.exports.deleteUserPhoto = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const existingUser = await UserModel.findById(userId);
+    if (existingUser && existingUser.picture && existingUser.picture !== './uploads/profil/random-user.jpg') {
+      const filePath = path.join(__dirname, '../../padel_frontend/public', existingUser.picture);
+      await fs.unlink(filePath);
+    }
+    else{
+      console.log("Impossible de supprimer cette image !")
+    }
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userId,
+      { $set: { picture: './uploads/profil/random-user.jpg' } },
+      { new: true }
+    );
+
+    return res.status(200).json({ message: 'Photo deleted successfully', updatedUser });
+  } catch (error) {
+    console.error('Error deleting post photo:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 

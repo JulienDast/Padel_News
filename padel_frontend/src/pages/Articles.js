@@ -4,7 +4,6 @@ import Thread from '../components/Thread';
 const Article = () => {
   return (
     <div>
-      Ceci est la page qui regroupera les articles
       <Thread />
     </div>
   );

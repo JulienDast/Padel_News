@@ -25,6 +25,7 @@ const PostSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
+      default: "./uploads/posts/random-article.jpg",
     },
     video: {
       type: String,

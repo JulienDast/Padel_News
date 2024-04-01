@@ -1,4 +1,4 @@
-import { GET_POSTS, LIKE_POST, UNLIKE_POST } from "../actions/post.actions";
+import { DELETE_PICTURE, DELETE_POST, DELETE_VIDEO, GET_POSTS, LIKE_POST, UNLIKE_POST, UPDATE_ARTICLE, UPDATE_PICTURE, UPDATE_SUBTITLE, UPDATE_TITLE, UPDATE_VIDEO } from "../actions/post.actions";
 
 const initialState = {}
 
@@ -25,8 +25,59 @@ export default function postReducer(state = initialState, action){
           }
         }
         return post;
-      })    
-    default:
-      return state;
+      });
+      case UPDATE_TITLE:
+        return state.map((post)=>{
+          if(post._id === action.payload.postId){
+            return{
+              ...post,
+              title: action.payload.title
+            };
+          } else return post;
+        });    
+      case UPDATE_SUBTITLE:
+        return state.map((post)=>{
+          if(post._id === action.payload.postId){
+            return{
+              ...post,
+              subtitle: action.payload.subtitle
+            };
+          } else return post;
+        });    
+      case UPDATE_ARTICLE:
+        return state.map((post)=>{
+          if(post._id === action.payload.postId){
+            return{
+              ...post,
+              article: action.payload.article
+            };
+          } else return post;
+        });  
+      case UPDATE_VIDEO:
+        return state.map((post)=>{
+          if(post._id === action.payload.postId){
+            return{
+              ...post,
+              article: action.payload.video
+            };
+          } else return post;
+        });  
+      case UPDATE_PICTURE:
+        return state.map((post)=>{
+          if(post._id === action.payload.postId){
+            return{
+              ...post,
+              article: action.payload.file[0]
+            };
+          } else return post;
+        });  
+      case DELETE_POST:
+        return state.filter((post) => post._id !== action.payload.post_id);
+      case DELETE_PICTURE:
+        return state.filter((post) => post._id !== action.payload.postId);      
+      case DELETE_VIDEO:
+        return state.filter((post)=> post._id !== action.payload.postId)    
+      default:
+        return state;
   }
 }
