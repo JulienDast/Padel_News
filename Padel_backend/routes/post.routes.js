@@ -7,6 +7,8 @@ router.post('/', postController.createPost, (req, res) => {
 });
 router.put('/:id', postController.updatePost);
 router.delete('/:id', postController.deletePost);
+router.delete('/delete-photo/:id', postController.deletePostPhoto);
+router.delete('/delete-video/:id', postController.deletePostVideo);
 
 router.patch('/like-post/:id', postController.likePost);
 router.patch('/unlike-post/:id', postController.unlikePost);

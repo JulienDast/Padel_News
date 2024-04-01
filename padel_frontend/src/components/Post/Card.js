@@ -15,30 +15,18 @@ const Card = ({post}) => {
   return (
     <div>
       <li key={post._id}>
-        {/* Wrappez les éléments suivants avec Link */}
         <Link to={`/articles/${post._id}`}>
           <div>
             {isLoading ? (
               <i className='fas fa-spinner fa-spin'></i>
             ) : (
-              <>
-                {/* <img src={
-                  !isEmpty(usersData[0]) && usersData.map((user) => {
-                  if (user._id === post.posterId) return user.picture;
-                  }).join('')
-                } alt='poster-pic'/> */}
-                <img src={post.picture} alt='pic-article'/>
+              <> 
+                <img src={post.picture} alt='pic-article' onError={(e)=>{e.target.src = './uploads/posts/random-article.jpg'}}/>
               </>
             )}
           </div>
           <div>
-            {/* <h3>
-              {
-              !isEmpty(usersData[0]) && usersData.map((user) => {
-                if (user._id === post.posterId) return user.pseudo;
-                }).join('')
-              }
-            </h3> */}
+
             <span>{dateParser(post.createdAt)}</span>
           </div>
           <div>
@@ -46,7 +34,6 @@ const Card = ({post}) => {
             <p>{post.subtitle}</p>
           </div>
         </Link>
-        {/* Boutons en dehors de Link */}
         <div>
           <p><i className="fa-regular fa-comment"/>{post.comments.length}</p>
           <p><LikeButton post={post}/></p>

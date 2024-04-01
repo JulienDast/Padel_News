@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UploadImg from './UploadImg';
 import { updateBio, updatePseudo } from '../../actions/user.actions';
 import { dateParser } from '../Utils';
+import DeleteProfilePic from './DeleteProfilePic';
 
 const UpdateProfil = () => {
   const [bio, setBio] = useState('');
@@ -45,6 +46,10 @@ const UpdateProfil = () => {
           <h3>Photo de profil</h3>
           <img src={userData.picture} alt='profile' />
           <UploadImg />
+          {userData.picture !== "./uploads/profil/random-user.jpg" &&
+          <DeleteProfilePic id={userData._id}/>
+          }
+
         </div>
         <div className="right">
           <div className="bio-update">
