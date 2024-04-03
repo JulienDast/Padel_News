@@ -9,6 +9,7 @@ import DeleteArticle from '../components/Post/DeleteArticle';
 import UploadImgArticle from '../components/Post/UploadImgArticle';
 import DeletePicture from '../components/Post/DeletePicture';
 import DeleteVideo from '../components/Post/DeleteVideo';
+import CommentsSection from '../components/Post/CommentsSection';
 
 const Article = () => {
   const { id } = useParams(); 
@@ -186,8 +187,8 @@ const Article = () => {
         <DeleteArticle id={id}/>
       )}
       <p>Post Date: {dateParser(selectedPost.createdAt)}</p>
-      <p>Comments: {selectedPost.comments.length}</p>
-      
+      <CommentsSection id={id} posterId={selectedPost.posterId} comments={selectedPost.comments}/>
+
     </div>
   );
 };
